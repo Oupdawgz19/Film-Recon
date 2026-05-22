@@ -1,0 +1,291 @@
+
+import pandas as pd
+import numpy as np
+from datetime import datetime
+import csv
+
+
+    # Create sample dataset with missing values and outliers
+file=pd.read_excel("C:/Users/adas5/Downloads/Jays/Unit streaming vs Cam streaming.xlsx")
+
+sample =pd.read_excel(file) 
+print(sample) 
+
+
+class CSVDataCleaner:
+    def __init__(self, filepath):
+        """Initialize with CSV file path"""
+        self.filepath = "C:\Users\adas5\Downloads\Jays\Unit streaming vs Cam streaming 2026-05-15.xlsx"
+    
+        
+    def load_file(self):
+        """Load CSV file into pandas DataFrame"""
+        try:
+            self.df = pd.read_xlsx(self.filepath)
+            self.original_shape = self.df.shape
+            self.log_operation(f"Loaded File: {self.filepath} | Shape: {self.original_shape}")
+            return self.df
+        except FileNotFoundError:
+            print(f"Error: File '{self.filepath}' not found")
+            return None
+    #
+    
+    def log_operation(self, message):
+        """Log cleaning operations"""
+        self.cleaning_log.append(f"[{datetime.now()}] {message}")
+        print(message)
+    def __init__(self, dataframe):
+        """
+        Initialize the DataCleaner with a pandas DataFrame.
+        
+        Args:
+            dataframe (pd.DataFrame): The input DataFrame to clean
+        """
+        self.df = dataframe
+        self.original_shape = dataframe.shape
+        self.cleaning_log = []
+    
+    def check_missing_values(self):
+        """
+        Check for missing values and NaN in the DataFrame.
+        
+        Returns:
+            dict: Dictionary containing missing value statistics
+        """
+        missing_info = {}
+        
+        for column in self.df.columns:
+            missing_count = self.df[column].isna().sum()
+            missing_percentage = (missing_count / len(self.df)) * 100
+            print(round(missing_percentage,2))
+            
+            missing_info[column] = {
+                'missing_count': missing_count,
+                'missing_percentage': round(missing_percentage, 2),
+                'data_type': str(self.df[column].dtype)
+            }
+            
+            # Conditional logic for missing values
+            if missing_count == 0:
+                print(f"Column '{column}': No missing values")
+
+            elif missing_percentage > 0:
+                print(f"Column '{column}': {missing_percentage}% missing - Consider dropping or enter missing values")
+                self.cleaning_log.append(f"WARNING: {column} has {missing_percentage}% missing values")
+
+                if missing_percentage>0:
+                    for missing_info in self.df.columns:
+                     print("Column" {column} " is blank please delete ")
+            
+            elif missing_percentage > 20:
+                print(f"Column '{column}': {missing_percentage}% missing - May need imputation")
+                self.cleaning_log.append(f"NOTICE: {column} has {missing_percentage}% missing values")
+
+            else:
+                print(f"Column '{column}': {missing_percentage}% missing - Can be handled")
+        
+        return missing_info
+    
+    def handle_missing_values(self, strategy='mean', columns=None):
+        """
+        Handle missing values using different strategies.
+        
+        Args:
+            strategy (str): 'forward_fill', 'backward_fill', 'drop'
+            columns (list): Specific columns to apply strategy to. If None, applies to all.
+        """
+        if columns is None:
+            columns = self.df.columns
+        
+        for column in columns:
+            if self.df[column].isna().sum() > 0:
+                        
+                ##--numerical handling--##
+               ## if strategy == 'mean':
+                  ##  if self.df[column].dtype in ['float64', 'int64']:
+                     ##   self.df[column].fillna(self.df[column].mean(), inplace=True)
+                    ##    print(f"Filled '{column}' with mean value")
+                   ## else:
+                    ##    print(f"Cannot apply mean to non-numeric column '{column}'")
+                
+              ##  elif strategy == 'median':
+              ##      if self.df[column].dtype in ['float64', 'int64']:
+              ##          self.df[column].fillna(self.df[column].median(), inplace=True)
+              ##          print(f"Filled '{column}' with median value")
+              ##      else:
+              #          print(f"Cannot apply median to non-numeric column '{column}'")
+                
+              #  elif strategy == 'mode':
+               #     mode_value = self.df[column].mode()
+              #      if len(mode_value) > 0:
+               #         self.df[column].fillna(mode_value[0], inplace=True)
+               #         print(f"Filled '{column}' with mode value")
+               #     else:
+                 #       print(f"No mode found for '{column}'")
+                ##--Nummerical ending--##
+
+                if strategy == 'forward_fill':
+                    self.df[column].fillna(method='ffill', inplace=True)
+                    print(f"Applied forward fill to '{column}'")
+                
+                elif strategy == 'backward_fill':
+                    self.df[column].fillna(method='bfill', inplace=True)
+                    print(f"Applied backward fill to '{column}'")
+                
+                ##elif strategy == 'drop':
+                   ## self.df.dropna(subset=[column], inplace=True)
+                   ## print(f"Dropped rows with missing values in '{column}'")
+                
+                else:
+                    print(f"Unknown strategy: {strategy}")
+    
+    def show_duplicates(self, subset=None, keep='first'):
+        """
+        Show duplicate rows from the DataFrame.
+        
+        Args:
+            subset (list): Column names to consider for identifying duplicates
+            keep (str): 'first', 'last', or False to remove all duplicates
+        """
+        duplicates_count = self.df.duplicated(subset=subset, keep=False).sum()
+        
+        if duplicates_count > 0:
+            print(f"Found {duplicates_count} duplicate rows")
+            # Don't actually drop duplicates here, just show them
+            duplicate_rows = self.df[self.df.duplicated(subset=subset, keep=False)]
+            print("Duplicate rows:")
+            print(duplicate_rows)
+            print(f"Duplicates found. New shape: {self.df.shape}")
+            self.cleaning_log.append(f"Found {duplicates_count} duplicates")
+        else:
+            print("No duplicates found")
+
+
+##--Outler for quntitative data--##
+    ##def remove_outliers(self, column, method='iqr', threshold=1.5):
+        """
+        Remove outliers from a specific column.
+        
+        Args:
+            column (str): Column name to check for outliers
+            method (str): 'iqr' (Interquartile Range) or 'zscore'
+            threshold (float): IQR multiplier or Z-score threshold
+        """
+      ##  if self.df[column].dtype not in ['float64', 'int64']:
+         ##   print(f"Column '{column}' is not numeric. Skipping outlier removal.")
+       ##     return
+        
+     ##   if method == 'iqr':
+     ##       Q1 = self.df[column].quantile(0.25)
+     ##       Q3 = self.df[column].quantile(0.75)
+     ##       IQR = Q3 - Q1
+       ###   upper_bound = Q3 + threshold * IQR
+            
+          ## if len(outliers) > 0:
+            #    print(f"Found {len(outliers)} outliers in '{column}'")
+             #   print(f"Bounds: [{lower_bound}, {upper_bound}]")
+              #  self.df = self.df[(self.df[column] >= lower_bound) & (self.df[column] <= upper_bound)]
+               # self.cleaning_log.append(f"Removed {len(outliers)} outliers from {column}")
+            #else:
+             #   print(f"No outliers found in '{column}' using IQR method")
+        
+       ##    z_scores = np.abs((self.df[column] - self.df[column].mean()) / self.df[column].std())
+           # outliers = self.df[z_scores > threshold]
+         #   if len(outliers) > 0:
+          #      print(f"Found {len(outliers)} outliers in '{column}' (Z-score > {threshold})")
+           #     self.df = self.df[z_scores <= threshold]
+            #    self.cleaning_log.append(f"Removed {len(outliers)} outliers using Z-score")
+            #lse:
+             #   print(f"No outliers found in '{column}' using Z-score method")
+##--end of outlier method--##
+
+
+    
+    def group_and_aggregate(self, groupby_column, agg_dict=None):
+        """
+        Group data by a column and apply aggregation functions.
+        
+        Args:
+            groupby_column (str or list): Column(s) to group by
+            agg_dict (dict): Dictionary with column names as keys and aggregation functions as values
+        
+        Returns:
+            pd.DataFrame: Grouped and aggregated DataFrame
+        """
+        if agg_dict is None:
+            agg_dict = {}
+        
+        if len(agg_dict) == 0:
+            print("No aggregation functions provided. Using count()...")
+            grouped = self.df.groupby(groupby_column).size(14)
+        else:
+            grouped = self.df.groupby(groupby_column).agg(agg_dict)
+        
+        print(f"Grouped by '{groupby_column}':")
+        print(grouped)
+        return grouped
+    
+    def conditional_cleaning(self, column, condition_func, action_func):
+        """
+        Apply conditional cleaning based on user-defined conditions.
+        
+        Args:
+            column (str): Column to apply condition to
+            condition_func (callable): Function that returns boolean mask
+            action_func (callable): Function to apply to filtered rows
+        """
+        mask = condition_func(self.df[column])
+        affected_rows = mask.sum()
+        
+        if affected_rows > 0:
+            print(f"Applying action to {affected_rows} rows in '{column}'")
+            self.df.loc[mask, column] = self.df.loc[mask, column].apply(action_func)
+            self.cleaning_log.append(f"Applied conditional action to {affected_rows} rows in {column}")
+        else:
+            print(f"No rows matched the condition for '{column}'")
+    
+    def data_type_conversion(self, column, target_type):
+        """
+        Convert column data type with error handling.
+        
+        Args:
+            column (str): Column name to convert
+            target_type (str): Target data type ('int', 'float', 'str', 'datetime')
+        """
+        try:
+            if target_type == 'int':
+                self.df[column] = self.df[column].astype('int64')
+            elif target_type == 'float':
+                self.df[column] = self.df[column].astype('float64')
+            elif target_type == 'str':
+                self.df[column] = self.df[column].astype('str')
+            elif target_type == 'datetime':
+                self.df[column] = pd.to_datetime(self.df[column])
+            else:
+                print(f"Unknown target type: {target_type}")
+                return
+            
+            print(f"Successfully converted '{column}' to {target_type}")
+            self.cleaning_log.append(f"Converted {column} to {target_type}")
+        except Exception as e:
+            print(f"Error converting '{column}' to {target_type}: {str(e)}")
+            self.cleaning_log.append(f"FAILED: Conversion of {column} to {target_type}")
+    
+    def get_cleaning_summary(self):
+        """
+        Print a summary of all cleaning operations performed.
+        """
+        print("\n" + "="*50)
+        print("DATA CLEANING SUMMARY")
+        print("="*50)
+        print(f"Original shape: {self.original_shape}")
+        print(f"Final shape: {self.df.shape}")
+        print(f"Rows removed: {self.original_shape[0] - self.df.shape[0]}")
+        print(f"\nCleaning Log:")
+        for i, log in enumerate(self.cleaning_log, 1):
+            print(f"  {i}. {log}")
+        print("="*50 + "\n")
+    
+    def get_dataframe(self):
+        """Return the cleaned DataFrame."""
+        return self.df
