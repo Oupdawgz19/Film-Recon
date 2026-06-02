@@ -1,0 +1,5 @@
+
+CREATE TABLE products(id SERIAL PRIMARY KEY,name TEXT);
+CREATE TABLE customers(id SERIAL PRIMARY KEY,name TEXT);
+CREATE TABLE orders(id SERIAL PRIMARY KEY,customer_id INT);
+CREATE TABLE inventory(id SERIAL PRIMARY KEY,product_id INT,qty INT);

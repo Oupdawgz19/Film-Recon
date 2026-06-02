@@ -1,0 +1,1 @@
+export default function DeliveryTracking(){return <div>Tracking</div>}

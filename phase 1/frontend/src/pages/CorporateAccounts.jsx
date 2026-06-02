@@ -1,0 +1,1 @@
+export default function CorporateAccounts(){return <div>Corporate</div>}
