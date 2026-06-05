@@ -1,5 +1,5 @@
 
-# Logistics MVP Phase 2
+# Logistica MVP Phase 2
 
 Working MVP architecture:
 - React frontend
@@ -13,6 +13,8 @@ Working MVP architecture:
 - Delivery tracking API
 - PostgreSQL schema
 - Docker Compose
+- Images folder
+- Rendering for all plattfrorms
 
 Run:
 1. npm install (frontend and backend)
