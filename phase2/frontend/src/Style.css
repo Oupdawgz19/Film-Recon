@@ -1,6 +1,6 @@
 /* General layout */
 :root {
-  --bg: #f5f7f9;
+  --bg: #003dc2;
   --surface: #ffffff;
   --surface-alt: #f1f4f7;
   --border: #d9dee4;
@@ -49,7 +49,7 @@ select {
   justify-content: space-between;
   gap: 18px;
   padding: 28px 26px;
-  background: linear-gradient(180deg, #ffffff 0%, #eef4fa 100%);
+  background: linear-gradient(180deg, #003dc2 30%, #0096ed 70%);
   border: 1px solid var(--border);
   border-radius: 18px;
   margin-bottom: 28px;
@@ -194,7 +194,7 @@ select {
   top: 14px;
   left: 14px;
   background: rgba(18, 115, 216, 0.95);
-  color: #fff;
+  color: #003dc2;
   padding: 6px 10px;
   border-radius: 999px;
   font-size: 0.8rem;
