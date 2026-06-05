@@ -4,11 +4,11 @@
 
 <h4>Key Features</h4>
 
-<p>Flame-retardant fabric construction
-<ul>Antistatic properties
-<ul>High durability stitching
-<ul>Multi-pocket design
-<ul>Reinforced knee areas
+<p>Flame-retardant fabric construction</ul>
+<ul>Antistatic properties</ul>
+<ul>High durability stitching</ul>
+<ul>Multi-pocket design</ul>
+<ul>Reinforced knee areas</ul>
 <ul>Adjustable cuffs and waist</ul>
 <ul>UV protection</ul>
 <ul>Comfortable ergonomic fit</ul>
@@ -101,25 +101,84 @@
 
 <p>
 <ul>Steel toe cap</ul>
-Slip-resistant sole
-Oil-resistant outsole
-Shock absorption technology
-Water-resistant upper
-Puncture-resistant midsole</p>
+<ul>Slip-resistant sole</ul>
+<ul>Oil-resistant outsole</ul>
+<ul>Shock absorption technology</ul>
+<ul>Water-resistant upper</ul>
+<ul>Puncture-resistant midsole</ul>
+</p>
 
 </div>
-{id:7,name:'Cut Resistant Gloves',price:249},
+<div class="Cut Resistant Gloves">
+<h5>Product Overview</h5>
+<p>Protective gloves specifically designed to reduce the risk of cuts and lacerations when handling sharp objects and materials.</p>
 
+<h6>Key Features</h6>
 
-{id:8,name:'Hard Hat',price:179},
+<ul>Cut-resistant fibers</ul>
+<ul>High grip coating</ul>
+<ul>Flexible construction</ul>
+<ul>Breathable lining</ul>
+<ul>Abrasion resistance</ul>
 
+<h7>Protection Levels</h7>
 
-{id:9,name:'Corporate Welcome Pack',price:699}
+<ul>ANSI Cut Levels A1-A9</ul>
+<ul>EN388 compliant (depending on model)</ul>
 
+</div>
 
-{id:10,name:'Hats',price:159}
+<div class="Hard Hat">
+<h5>Product Overview</h5>
+<p>Industrial head protection designed to minimize injuries from falling objects, impact hazards, and electrical risks.</p>
 
+<h6>Key Features</h6>
+<p>
+<ul>High-density polyethylene shell</ul>
+<ul>Adjustable suspension harness</ul>
+<ul>Sweatband comfort system</ul>
+<ul>UV resistant</ul>
+<ul>Lightweight design</ul>
+</p>
+</div>
 
+<div class="Corporate Welcome Pack">
+<h5>Product Overview</h5>
+<p>A branded onboarding package designed to create a positive first impression for employees, clients, and business partners.</p>
+
+<h6>Typical Contents</h6>
+
+<ul>Branded notebook</ul>
+<ul>Company pen</ul>
+<ul>Coffee mug</ul>
+<ul>Water bottle</ul>
+<ul>Welcome letter</ul>
+<button a href="Welcome.html", size=25px, color: #0099ff>"Custom Welcome Letter"</button>
+<ul>Company profile</ul>
+<ul>Branded apparel</ul>
+<button a href="custom_aparel.html", size=25px, color: #0099ff>"Customize Apparel"</button>
+
+</div>
+<div class="Hats">
+<h5>Product Overview</h5>
+<p>Branded headwear designed for sun protection, corporate branding, and team identification.</p>
+
+<h6>Available Styles</h6>
+
+<ul>Baseball caps</ul>
+<ul>Bucket hats</ul>
+<ul>Sun hats(optional)</ul>
+<ul>Promotional caps</ul>
+
+<h7>Key Features</h7>
+
+<ul>Adjustable sizing</ul>
+<ul>Embroidery branding options</ul>
+<ul>UV protection</ul>
+<ul>Breathable fabric</ul>
+<button a href="custom_hat.html", size=25px, color: #0099ff>"Customize Hats"</button>
+
+</div>
 {id:11,name:'harness',price:499-1799}
 
 
