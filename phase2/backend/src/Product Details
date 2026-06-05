@@ -1,0 +1,131 @@
+<div class="FR Overall", group="Product_details>
+<h4>Product Overview</h4>
+<p>A high-performance flame-resistant protective garment designed to safeguard workers operating in hazardous environments exposed to heat, sparks, molten metal splash, electrical arc flash, and fire risks.</p>
+
+<h4>Key Features</h4>
+
+<p>Flame-retardant fabric construction
+<ul>Antistatic properties
+<ul>High durability stitching
+<ul>Multi-pocket design
+<ul>Reinforced knee areas
+<ul>Adjustable cuffs and waist</ul>
+<ul>UV protection</ul>
+<ul>Comfortable ergonomic fit</ul>
+</p>
+
+<h5>Compliance Standards</h5>
+<p>
+<ul>EN ISO 11612</ul>
+<ul>EN ISO 11611</ul>
+<ul>IEC 61482</ul>
+<ul>EN 1149-5</ul> 
+</p>
+
+</div>
+
+<div class="Chef Wear Set">
+<h4>Product Overview</h4>
+<p>Professional culinary apparel designed to provide comfort, hygiene, and a polished appearance in commercial kitchens and food preparation environments.</p>
+
+<h5>Package Contents</h5>
+
+<body>
+<ul>Chef jacket</ul>
+<ul>Chef trousers</ul>
+<ul>Apron</ul>
+<ul>Chef hat or skull cap</ul>
+
+<h6>Key Features<h6>
+
+<p>Breathable fabric</ul>
+<ul>Heat-resistant materials</ul>
+<ul>Easy-care fabric</ul>
+<ul>Stain-resistant finish</ul>
+<ul>Comfortable fit</ul>
+<ul>Reinforced seams</ul>
+</p>
+</div>
+
+<div class="Security Uniform">
+<h5>Product Overview</h5>
+<p>A durable and professional uniform designed for security personnel requiring comfort, authority, and functionality during extended shifts.</p>
+
+<h6>Key Features</h6>
+
+<p>
+<ul>Professional appearance</ul>
+<ul>Durable polycotton fabric</ul>
+<ul>Multiple utility pockets</ul>
+<ul>Epaulettes for rank insignia</ul>
+<ul>Reinforced stress points</ul>
+<ul>Fade-resistant material</ul>
+</p>
+</div>
+
+<div class="Reflective Jacket">
+<h5>Product Overview</h5>
+<p>High-visibility outerwear designed to improve worker visibility in low-light, high-traffic, and hazardous work environments.</p>
+
+<h6>Key Features</h6>
+
+<p>
+<ul>Reflective striping</ul>
+<ul>Weather-resistant construction</ul>
+<ul>Windproof design</ul>
+<ul>Water-resistant outer shell</ul>
+<ul>Adjustable cuffs</ul>
+<ul>High-visibility colors</ul></p>
+</div>
+
+<div class="Safety Vest">
+<h5>Product Overview</h5>
+<p>A lightweight high-visibility garment that enhances worker visibility and safety in operational environments.</p>
+
+<h6>Key Features</h6>
+
+<p>
+<ul>Reflective tape</ul>
+<ul>Lightweight design</ul>
+<ul>Breathable mesh options</ul>
+<ul>Front zip closure</ul>
+<ul>Durable polyester construction</ul>
+</p>
+</div>
+
+<div name="Heavy Duty Boots>
+<h5>Product Overview</h5>
+<p>Industrial-grade safety footwear engineered to protect workers from impact, compression, slips, punctures, and workplace hazards.</p>
+
+<h6>Key Features</h6>
+
+<p>
+<ul>Steel toe cap</ul>
+Slip-resistant sole
+Oil-resistant outsole
+Shock absorption technology
+Water-resistant upper
+Puncture-resistant midsole</p>
+
+</div>
+{id:7,name:'Cut Resistant Gloves',price:249},
+
+
+{id:8,name:'Hard Hat',price:179},
+
+
+{id:9,name:'Corporate Welcome Pack',price:699}
+
+
+{id:10,name:'Hats',price:159}
+
+
+{id:11,name:'harness',price:499-1799}
+
+
+{id:12,name:'First-Aid Kit',price:499-1599}
+
+
+{id:13,name:'Drug test',price:299}
+
+
